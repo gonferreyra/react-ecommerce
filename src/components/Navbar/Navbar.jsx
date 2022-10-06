@@ -9,8 +9,10 @@ import {
   NavLinks,
   NavBtn,
   NavBtnLink,
+  NavCartBtn,
 } from "./NavbarStyle";
 import { HiMenu } from "react-icons/hi";
+import cart from "../../images/carrito.png";
 
 const Navbar = ({ toggle }) => {
   return (
@@ -39,8 +41,10 @@ const Navbar = ({ toggle }) => {
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink>Sign In</NavBtnLink>
-            <NavBtnLink>Cart</NavBtnLink>
+            {/* <NavBtnLink>Sign In</NavBtnLink> */}
+            <NavBtnLink>
+              <NavCartBtn src={cart} />
+            </NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>

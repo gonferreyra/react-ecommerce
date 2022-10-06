@@ -53,7 +53,7 @@ export const TextWrapper = styled.div`
 `
 
 export const TopLine = styled.p`
-  color: #01bf71;
+  color: red;
   font-size: 16px;
   line-height: 16px;
   font-weight: 700;
@@ -102,8 +102,9 @@ export const Img = styled.img`
 `
 
 export const ButtonBanner = styled.button`
-  width: 90px;
-  height: 35px;
+  width: 120px;
+  height: 40px;
+  font-size: 1rem;
   border-radius: 50px;
   border: none;
 

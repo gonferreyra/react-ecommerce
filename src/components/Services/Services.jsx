@@ -8,6 +8,9 @@ import {
   ServicesH2,
   ServicesP,
 } from "./ServicesStyle";
+import Payments from "../../images/undraw_stripe_payments_re_chlm.svg";
+import Free from "../../images/free.svg";
+import Change from "../../images/change.svg";
 
 const Services = () => {
   return (
@@ -15,24 +18,24 @@ const Services = () => {
       <ServicesH1>Our Services</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
-          <ServicesIcon />
-          <ServicesH2>Number 1</ServicesH2>
+          <ServicesIcon src={Free} />
+          <ServicesH2>Free Shipping</ServicesH2>
           <ServicesP>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda.
+            Ordering 2 or more items, you get free shipping world wide.
           </ServicesP>
         </ServicesCard>
         <ServicesCard>
-          <ServicesIcon />
-          <ServicesH2>Number 2</ServicesH2>
+          <ServicesIcon src={Payments} />
+          <ServicesH2>Payments</ServicesH2>
           <ServicesP>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda.
+            We accept credit card and crypto payments on all our products.
           </ServicesP>
         </ServicesCard>
         <ServicesCard>
-          <ServicesIcon />
-          <ServicesH2>Number 3</ServicesH2>
+          <ServicesIcon src={Change} />
+          <ServicesH2>Change</ServicesH2>
           <ServicesP>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda.
+            Refund within 72hs if your not happy with the product.
           </ServicesP>
         </ServicesCard>
       </ServicesWrapper>
