@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Services from "../components/Services/Services";
 import Sidebar from "../components/Sidebar/Sidebar";
 import NewReleaseSection from "../components/NewReleaseSection/NewReleaseSection";
+import SneakersSection from "../components/SneakersSection/SneakersSection";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,7 @@ const Home = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <Hero />
+      <SneakersSection />
       <Services />
       <NewReleaseSection />
     </>
