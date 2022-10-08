@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { GrClose } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
+import { Link as LinkScroll } from 'react-scroll'
 
 export const SidebarContainer = styled.aside`
     position: fixed;
@@ -47,7 +48,7 @@ export const SidebarMenu = styled.ul`
 `
 
 //ver link scroll
-export const SidebarLink = styled(Link)`
+export const SidebarLink = styled(LinkScroll)`
     display: flex;
     align-items: center;
     justify-content: center;

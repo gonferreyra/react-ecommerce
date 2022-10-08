@@ -25,21 +25,48 @@ const Navbar = ({ toggle }) => {
           </ToggleIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks>Home</NavLinks>
+              <NavLinks
+                // activeClass="active"
+                to="hero"
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={500}
+              >
+                Home
+              </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks>Sneakers</NavLinks>
+              <NavLinks
+                // activeClass="active"
+                to="sneakerSection"
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={500}
+              >
+                Sneakers
+              </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks>Services</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks>Login</NavLinks>
+              <NavLinks
+                to="service"
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={500}
+              >
+                Services
+              </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks>About</NavLinks>
             </NavItem>
+            {/* <NavItem>
+              <NavLinks>Login</NavLinks>
+            </NavItem> */}
           </NavMenu>
+
           <NavBtn>
             {/* <NavBtnLink>Sign In</NavBtnLink> */}
             <NavBtnLink>
