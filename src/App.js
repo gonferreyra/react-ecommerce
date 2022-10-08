@@ -1,17 +1,22 @@
-import Home from './pages/Home';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import './App.css'
-
+import { UserContext } from "./components/Context/UserContext"
+import RouterApp from './components/router/RouterApp';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
 
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  console.log(isOpen);
+
+  return (
+    <UserContext.Provider value={{ isOpen, setIsOpen, toggle }}>
+      <RouterApp />
+    </UserContext.Provider>
   );
 }
 
