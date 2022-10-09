@@ -12,10 +12,12 @@ import Payments from "../../images/undraw_stripe_payments_re_chlm.svg";
 import Free from "../../images/free.svg";
 import Change from "../../images/change.svg";
 
-const Services = () => {
+const ServicesSection = () => {
   return (
-    <ServicesContainer>
-      <ServicesH1>Our Services</ServicesH1>
+    <ServicesContainer id="service">
+      <ServicesH1>
+        Place your order today and start enjoying our benefits
+      </ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
           <ServicesIcon src={Free} />
@@ -43,4 +45,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ServicesSection;
