@@ -6,6 +6,7 @@ import ServicesSection from "../components/ServicesSection/Services";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Navbar from "../components/Navbar/Navbar";
 import { UserContext } from "../components/Context/UserContext";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   const { isOpen, toggle } = useContext(UserContext);
@@ -18,6 +19,7 @@ const Home = () => {
       <SneakersSection />
       <ServicesSection />
       <NewReleaseSection />
+      <Footer />
     </>
   );
 };
