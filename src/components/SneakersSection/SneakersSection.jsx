@@ -1,122 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
-import imgtest from "../../images/airjordan1.png";
+// import imgtest from "../../images/airjordan1.png";
 // import "./Style.css";
-import { BsFillCartCheckFill } from "react-icons/bs";
-import { BiDetail } from "react-icons/bi";
+
 import {
-  Card,
-  CardImg,
-  CardPrice,
-  CardHoverContainer,
-  CardBtn,
-  Btn,
-  CardIcons,
-  CardInfoContainer,
-  CardName,
   SneakerContainer,
-  SneakerImg,
   SneakerSection,
-  IconBtn,
+  ShowMoreBtn,
+  Section,
+  ButtonContainer,
 } from "./SneakersSectionStyle";
+import { sneakers } from "../../DataBase/db";
+import SneakerCard from "./SneakerCard";
 
 const SneakersSection = () => {
+  // Items to show state, determines how many items are shown on the sneakers section
+  const [itemsToShow, setItemsToShow] = useState({
+    items: 3,
+  });
+  const { items } = itemsToShow;
+  // console.log(items);
+
+  const showMore = () => {
+    setItemsToShow({ ...itemsToShow, items: items + 3 });
+  };
+
   return (
-    <SneakerSection>
-      <SneakerContainer>
-        <Card>
-          <CardImg>
-            <SneakerImg src={imgtest} />
-          </CardImg>
-          <CardInfoContainer>
-            <CardName>NIKE</CardName>
-            <CardPrice>$ 250</CardPrice>
-            <CardHoverContainer>
-              <CardBtn>
-                <Btn>
-                  <BsFillCartCheckFill /> Add to Cart
-                </Btn>
-              </CardBtn>
-              <CardIcons>
-                <IconBtn>
-                  <BiDetail size={20} />
-                </IconBtn>
-              </CardIcons>
-            </CardHoverContainer>
-          </CardInfoContainer>
-        </Card>
-      </SneakerContainer>
+    <SneakerSection id="sneakerSection">
+      <Section>
+        <SneakerContainer>
+          {sneakers.slice(0, items).map((sneaker) => (
+            <SneakerCard key={sneaker.id} sneaker={sneaker} />
+          ))}
+        </SneakerContainer>
+        <ButtonContainer>
+          <ShowMoreBtn onClick={showMore}>Show more</ShowMoreBtn>
+        </ButtonContainer>
+      </Section>
     </SneakerSection>
-    // <div className="sneakers__section">
-    //   <div className="sneakers__container">
-    //     <div className="card">
-    //       <div className="card__image">
-    //         <img src={imgtest} />
-    //       </div>
-    //       <div className="card__info__container">
-    //         <div className="card__name">
-    //           <p>nike</p>
-    //         </div>
-    //         <div className="card__price">
-    //           <p>$ 250</p>
-    //         </div>
-    //         <div className="card__hover__container">
-    //           <div className="card__btn">
-    //             <p>add to cart</p>
-    //             {/* componene carrito dentro de un link */}
-    //           </div>
-    //           <div className="card__icons">
-    //             <p>other icons</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     <div className="card">
-    //       <div className="card__image">
-    //         <img src={imgtest} />
-    //       </div>
-    //       <div className="card__info__container">
-    //         <div className="card__name">
-    //           <p>nike</p>
-    //         </div>
-    //         <div className="card__price">
-    //           <p>$ 250</p>
-    //         </div>
-    //         <div className="card__hover__container">
-    //           <div className="card__btn">
-    //             <p>add to cart</p>
-    //             {/* componene carrito dentro de un link */}
-    //           </div>
-    //           <div className="card__icons">
-    //             <p>other icons</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     <div className="card">
-    //       <div className="card__image">
-    //         <img src={imgtest} />
-    //       </div>
-    //       <div className="card__info__container">
-    //         <div className="card__name">
-    //           <p>nike</p>
-    //         </div>
-    //         <div className="card__price">
-    //           <p>$ 250</p>
-    //         </div>
-    //         <div className="card__hover__container">
-    //           <div className="card__btn">
-    //             <p>add to cart</p>
-    //             {/* componene carrito dentro de un link */}
-    //           </div>
-    //           <div className="card__icons">
-    //             <p>other icons</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
