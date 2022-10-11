@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { GrClose } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 import { Link as LinkScroll } from 'react-scroll'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export const SidebarContainer = styled.aside`
     position: fixed;
@@ -28,7 +28,7 @@ export const Icon = styled.div`
     outline: none;
 `
 
-export const CloseIcon = styled(GrClose)`
+export const CloseIcon = styled(AiOutlineClose)`
     color: #fff;
 `
 
