@@ -4,17 +4,22 @@ import { UserContext } from "./components/Context/UserContext"
 import RouterApp from './components/router/RouterApp';
 
 function App() {
-
+  // navbar-aside
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log(isOpen);
+  // Cart
+  const [cartIsOpen, setCartIsOpen] = useState(false);
+
+  const toggleCart = () => {
+    setCartIsOpen(!cartIsOpen);
+  };
 
   return (
-    <UserContext.Provider value={{ isOpen, setIsOpen, toggle }}>
+    <UserContext.Provider value={{ isOpen, setIsOpen, toggle, cartIsOpen, setCartIsOpen, toggleCart }}>
       <RouterApp />
     </UserContext.Provider>
   );
