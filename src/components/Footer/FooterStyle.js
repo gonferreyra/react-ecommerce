@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 export const FooterContainer = styled.div`
     background-color: #101522;
+    opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
+    transition: 0.3s ease-in-out;
 `
 
 export const FooterWrap = styled.div`

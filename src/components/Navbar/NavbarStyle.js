@@ -42,6 +42,40 @@ export const NavLogo = styled(Link)`
     text-decoration: none;
 `
 
+export const NavCartMobile = styled.div`
+    position: absolute;
+    top: calc(40px - 17.93px);
+    left: calc(50% - 25px);
+
+    @media screen and (min-width: 769px) {
+        display: none;
+    }
+`
+
+export const NavCartMobileBtn = styled(Link)`
+
+`
+
+export const NavCartMobileBtnImg = styled.img`
+    width: 40px;
+`
+
+export const CartItemsMobile = styled.div`
+    background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 20px;
+    margin: auto;
+    color: white;
+    position: absolute;
+    bottom: -10px;
+    right: 0px;
+    // if cart has no item, don't show the cero
+    opacity: ${({ cartCount }) => (cartCount === 0 ? '0' : '1')};
+`
+
 // Toggle elemento on Nav to click and open
 export const ToggleIcon = styled.div`
     display: none;
@@ -112,6 +146,7 @@ export const NavBtnLink = styled(Link)`
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     text-decoration: none;
+    position: relative;
 
     /* &:hover {
         transition: all 0.2s ease-in out;
@@ -121,6 +156,20 @@ export const NavBtnLink = styled(Link)`
 `
 
 export const NavCartBtn = styled.img`
-    width: 50px;
+    width: 40px;
     height: 100%;
+`
+
+export const CartItems = styled.div`
+    background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 20px;
+    margin: auto;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 25px;
 `

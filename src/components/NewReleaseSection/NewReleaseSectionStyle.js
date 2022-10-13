@@ -4,6 +4,8 @@ export const InfoContainer = styled.div`
   color: #fff;
   /* background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#010606')}; */
   /* background: #010606; */
+  opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
+  transition: 0.3s ease-in-out;
 
   @media screen and (max-width: 768px) {
       padding: 100px 0;
@@ -108,10 +110,12 @@ export const ButtonBanner = styled.button`
   border-radius: 50px;
   border: none;
 
+  transition: all 0.4s ease;
+
   &:hover {
     scale: 1.2;
     background: black;
     color: red;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
   }
 `

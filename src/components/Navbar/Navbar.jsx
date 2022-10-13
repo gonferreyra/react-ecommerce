@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Nav,
   NavbarContainer,
@@ -10,16 +10,58 @@ import {
   NavBtn,
   NavBtnLink,
   NavCartBtn,
+  CartItems,
+  NavCartMobile,
+  NavCartMobileBtn,
+  NavCartMobileBtnImg,
+  CartItemsMobile,
 } from "./NavbarStyle";
 import { HiMenu } from "react-icons/hi";
-import cart from "../../images/carrito.png";
+import cartImg from "../../images/carrito.png";
+import { animateScroll as scroll } from "react-scroll";
+import { UserContext } from "../Context/UserContext";
+import { useSelector } from "react-redux";
 
 const Navbar = ({ toggle }) => {
+  // Scroll to top function, react-scroll
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
+
+  const { toggleCart } = useContext(UserContext);
+
+  // connect state from store to component
+  const cartState = useSelector((state) => state.shop.cart);
+  // console.log(cartState);
+
+  // number above cart
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    let count = 0;
+    // count all the items including the quantity of each product
+    cartState.forEach((item) => {
+      count += item.quantity;
+    });
+
+    setCartCount(count);
+  }, [cartState, cartCount]);
+
   return (
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo>Store</NavLogo>
+          <NavLogo to="/" onClick={toggleHome}>
+            Store
+          </NavLogo>
+          <NavCartMobile>
+            <NavCartMobileBtn>
+              <NavCartMobileBtnImg src={cartImg} onClick={toggleCart} />
+              <CartItemsMobile cartCount={cartCount}>
+                {cartCount}
+              </CartItemsMobile>
+            </NavCartMobileBtn>
+          </NavCartMobile>
           <ToggleIcon>
             <HiMenu onClick={toggle} />
           </ToggleIcon>
@@ -60,17 +102,24 @@ const Navbar = ({ toggle }) => {
               </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks>About</NavLinks>
+              <NavLinks
+                to="footer"
+                spy={true}
+                smooth={true}
+                // aumentamos el offset ya que no tiene height suficiente para los -80px
+                offset={-230}
+                duration={500}
+              >
+                About
+              </NavLinks>
             </NavItem>
-            {/* <NavItem>
-              <NavLinks>Login</NavLinks>
-            </NavItem> */}
           </NavMenu>
 
           <NavBtn>
             {/* <NavBtnLink>Sign In</NavBtnLink> */}
             <NavBtnLink>
-              <NavCartBtn src={cart} />
+              <NavCartBtn src={cartImg} />
+              <CartItems>3</CartItems>
             </NavBtnLink>
           </NavBtn>
         </NavbarContainer>

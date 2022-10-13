@@ -9,6 +9,8 @@ export const HeroContainer = styled.div`
     height: 800px;
     position: relative;
     z-index: 1;
+    opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
+    transition: 0.3s ease-in-out;
 
     :before{
         content: '';

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import {
   FooterContainer,
@@ -22,15 +22,18 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
+import { UserContext } from "../Context/UserContext";
 
 const Footer = () => {
+  const { cartIsOpen } = useContext(UserContext);
+
   // Scroll to top function, react-scroll
   const toggleHome = () => {
     scroll.scrollToTop();
   };
 
   return (
-    <FooterContainer id="footer">
+    <FooterContainer id="footer" cartIsOpen={cartIsOpen}>
       <FooterWrap>
         <FooterLinksContainer>
           <FooterLinksWrapper>

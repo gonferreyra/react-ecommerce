@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   InfoContainer,
   InfoWrapper,
@@ -15,10 +15,13 @@ import {
   ButtonBanner,
 } from "./NewReleaseSectionStyle";
 import Img2 from "../../images/jordan.png";
+import { UserContext } from "../Context/UserContext";
 
 const NewReleaseSection = () => {
+  const { cartIsOpen } = useContext(UserContext);
+
   return (
-    <InfoContainer>
+    <InfoContainer cartIsOpen={cartIsOpen}>
       <InfoWrapper>
         <InfoRow>
           <Column1>

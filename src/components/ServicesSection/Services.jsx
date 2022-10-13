@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   ServicesContainer,
   ServicesH1,
@@ -11,10 +11,13 @@ import {
 import Payments from "../../images/undraw_stripe_payments_re_chlm.svg";
 import Free from "../../images/free.svg";
 import Change from "../../images/change.svg";
+import { UserContext } from "../Context/UserContext";
 
 const ServicesSection = () => {
+  const { cartIsOpen } = useContext(UserContext);
+
   return (
-    <ServicesContainer id="service">
+    <ServicesContainer id="service" cartIsOpen={cartIsOpen}>
       <ServicesH1>
         Place your order today and start enjoying our benefits
       </ServicesH1>

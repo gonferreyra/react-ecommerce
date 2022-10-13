@@ -7,6 +7,8 @@ export const ServicesContainer = styled.div`
     justify-content: center;
     align-items: center;
     background: #010606;
+    opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
+    transition: 0.3s ease-in-out;
 
     @media screen and (max-width: 768px) {
         height: 1100px;
