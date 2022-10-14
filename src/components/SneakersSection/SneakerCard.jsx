@@ -15,7 +15,13 @@ import {
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { BiDetail } from "react-icons/bi";
 
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/Shopping/shopping-actions";
+
 const SneakerCard = ({ sneaker }) => {
+  // useDispatch, bring a dispatch from store, import addToCart from actions and pass it along dispatch to onclick function
+  const dispatch = useDispatch();
+
   return (
     <Card>
       <CardImg>
@@ -27,7 +33,10 @@ const SneakerCard = ({ sneaker }) => {
         <CardPrice>$ {sneaker.price}</CardPrice>
         <CardHoverContainer>
           <CardBtn>
-            <Btn id={sneaker.id}>
+            <Btn
+              id={sneaker.id}
+              onClick={() => dispatch(addToCart(sneaker.id))}
+            >
               <BsFillCartCheckFill /> Add to Cart
             </Btn>
           </CardBtn>

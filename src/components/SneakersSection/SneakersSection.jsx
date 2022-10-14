@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // import imgtest from "../../images/airjordan1.png";
 // import "./Style.css";
@@ -10,8 +10,11 @@ import {
   Section,
   ButtonContainer,
 } from "./SneakersSectionStyle";
-import { sneakers } from "../../DataBase/db";
+// import { sneakers } from "../../DataBase/db";
 import SneakerCard from "./SneakerCard";
+
+import { useSelector } from "react-redux";
+import { UserContext } from "../Context/UserContext";
 
 const SneakersSection = () => {
   // Items to show state, determines how many items are shown on the sneakers section
@@ -25,11 +28,18 @@ const SneakersSection = () => {
     setItemsToShow({ ...itemsToShow, items: items + 3 });
   };
 
+  // bring state from context
+  const { cartIsOpen } = useContext(UserContext);
+
+  // connect state from store to component
+  const products = useSelector((state) => state.shop.products);
+  // console.log(products);
+
   return (
-    <SneakerSection id="sneakerSection">
+    <SneakerSection id="sneakerSection" cartIsOpen={cartIsOpen}>
       <Section>
         <SneakerContainer>
-          {sneakers.slice(0, items).map((sneaker) => (
+          {products.slice(0, items).map((sneaker) => (
             <SneakerCard key={sneaker.id} sneaker={sneaker} />
           ))}
         </SneakerContainer>

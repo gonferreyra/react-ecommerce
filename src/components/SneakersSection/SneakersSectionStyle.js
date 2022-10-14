@@ -9,6 +9,8 @@ export const SneakerSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
+  transition: 0.3s ease-in-out;
 `
 
 export const Section = styled.div`
