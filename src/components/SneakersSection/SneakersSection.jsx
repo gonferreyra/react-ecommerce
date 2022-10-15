@@ -11,7 +11,7 @@ import {
   ButtonContainer,
 } from "./SneakersSectionStyle";
 // import { sneakers } from "../../DataBase/db";
-import SneakerCard from "./SneakerCard";
+import SneakerCard from "./SneakerCard/SneakerCard";
 
 import { useSelector } from "react-redux";
 import { UserContext } from "../Context/UserContext";

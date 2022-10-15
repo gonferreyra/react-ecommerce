@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Card = styled.div`
@@ -77,7 +78,7 @@ export const Btn = styled.button`
     }
 `
 
-export const CardIcons = styled.div`
+export const CardIcons = styled(Link)`
 
 `
 
