@@ -1,21 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-import { BsTrash } from "react-icons/bs";
 import { IoIosClose } from "react-icons/io";
-import test from "../../img/air-jordan-1-low-flyease.png";
+// import { BsTrash } from "react-icons/bs";
 
-import "./cart.css";
+// import test from "../../img/air-jordan-1-low-flyease.png";
+
+import {
+  CartContainer,
+  CartTitle,
+  // CartContent,
+  // CartBox,
+  // CartImg,
+  // ProductDetailBox,
+  // CartProductTitle,
+  // CartProductPrice,
+  // CartProductQuantity,
+  CartTotal,
+  TotalPrice,
+  TotalTitle,
+  BtnBuy,
+} from "./CartStyle";
+import { UserContext } from "../Context/UserContext";
+import { useSelector } from "react-redux";
+import CartContent from "./CartContent";
 
 const Cart = () => {
-  const [cartIsOpen, setCartIsOpen] = useState(false);
+  const { cartIsOpen, toggleCart } = useContext(UserContext);
 
-  const toggleCart = () => {
-    setCartIsOpen(!cartIsOpen);
-  };
+  // bring cart from reducer (name: shop)
+  const cart = useSelector((state) => state.shop.cart);
+  // console.log(cart);
+
+  // Update total
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.quantity * item.item.price;
+    });
+    setTotalPrice(total);
+  }, [cart, totalPrice, setTotalPrice]);
 
   return (
     <>
-      <div className="cart">
+      <CartContainer cartIsOpen={cartIsOpen}>
         <IoIosClose
           style={{
             position: "absolute",
@@ -25,38 +54,16 @@ const Cart = () => {
           }}
           onClick={toggleCart}
         />
-        <h2 className="cart-title">Your Cart</h2>
-
-        <div className="cart-content">
-          <div className="cart-box">
-            <img
-              className="cart-product-img"
-              src={test}
-              alt="nada"
-              onClick={toggleCart}
-            />
-            <div className="product-detail-box">
-              <h3 className="cart-product-title">Nike XX</h3>
-              <p className="cart-product-price">$ 115</p>
-              <input
-                type="number"
-                // value="1"
-                className="cart-product-quantity"
-              />
-            </div>
-
-            <BsTrash fontSize="20px" color="red" cursor="pointer" />
-          </div>
-        </div>
-        <div className="cart-total">
-          <p className="total-title">Total</p>
-          <p className="total-price">$0</p>
-        </div>
-        {/* <div className="buy-btn">
-          <button>Buy Now</button>
-        </div> */}
-        <button className="btn-buy">Buy Now</button>
-      </div>
+        <CartTitle>Your Cart</CartTitle>
+        {cart.map((item, i) => (
+          <CartContent key={i} data={item} />
+        ))}
+        <CartTotal>
+          <TotalTitle>Total</TotalTitle>
+          <TotalPrice>$ {totalPrice}</TotalPrice>
+        </CartTotal>
+        <BtnBuy>Buy Now</BtnBuy>
+      </CartContainer>
     </>
   );
 };
