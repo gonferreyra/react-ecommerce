@@ -47,6 +47,13 @@ const Navbar = ({ toggle }) => {
     setCartCount(count);
   }, [cartState, cartCount]);
 
+  //Replace reactscroll offset with a function and react-router-hash:
+  const scrollWithOffset = (el, offsety) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = offsety;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  };
+
   return (
     <>
       <Nav>
@@ -68,42 +75,34 @@ const Navbar = ({ toggle }) => {
           <NavMenu>
             <NavItem>
               <NavLinks
-                // activeClass="active"
-                to="hero"
-                spy={true}
+                to="/#hero"
                 smooth={true}
-                offset={-80}
-                duration={500}
+                scroll={(el) => scrollWithOffset(el, -80)}
               >
                 Home
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks
-                // activeClass="active"
-                to="sneakerSection"
-                spy={true}
+                to="/#sneakerSection"
                 smooth={true}
-                offset={-80}
-                duration={500}
+                scroll={(el) => scrollWithOffset(el, -80)}
               >
                 Sneakers
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks
-                to="service"
-                spy={true}
+                to="/#service"
                 smooth={true}
-                offset={-80}
-                duration={500}
+                scroll={(el) => scrollWithOffset(el, -80)}
               >
                 Services
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks
-                to="footer"
+                to="/#footer"
                 spy={true}
                 smooth={true}
                 // aumentamos el offset ya que no tiene height suficiente para los -80px
@@ -118,8 +117,8 @@ const Navbar = ({ toggle }) => {
           <NavBtn>
             {/* <NavBtnLink>Sign In</NavBtnLink> */}
             <NavBtnLink>
-              <NavCartBtn src={cartImg} />
-              <CartItems>3</CartItems>
+              <NavCartBtn src={cartImg} onClick={toggleCart} />
+              <CartItems cartCount={cartCount}>{cartCount}</CartItems>
             </NavBtnLink>
           </NavBtn>
         </NavbarContainer>

@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Link as LinkScroll } from 'react-scroll'
+// import { Link as LinkScroll } from 'react-scroll'
+import { NavHashLink } from 'react-router-hash-link';
 
 
 export const Nav = styled.nav`
-    background: #000;
+    /* background: #000; */
+    background: #101522;
     // ver
     height: 80px;
     /* margin-top: -80px; */
@@ -40,6 +42,14 @@ export const NavLogo = styled(Link)`
     margin-left: 24px;
     font-weight: bold;
     text-decoration: none;
+
+    &:hover {
+        color: red;
+    }
+
+    @media screen and (min-width: 1200px) {
+        font-size: 1.2rem;
+    }
 `
 
 export const NavCartMobile = styled.div`
@@ -72,7 +82,7 @@ export const CartItemsMobile = styled.div`
     position: absolute;
     bottom: -10px;
     right: 0px;
-    // if cart has no item, don't show the cero
+    // if cart has no item, don't show the zero
     opacity: ${({ cartCount }) => (cartCount === 0 ? '0' : '1')};
 `
 
@@ -110,7 +120,7 @@ export const NavItem = styled.li`
 `
 
 // ver Links react scroll
-export const NavLinks = styled(LinkScroll)`
+export const NavLinks = styled(NavHashLink)`
     color: #fff;
     display: flex;
     align-items: center;
@@ -118,10 +128,16 @@ export const NavLinks = styled(LinkScroll)`
     padding: 0 1rem;
     height: 100%;
     cursor: pointer;
+    transition: .3s ease-out;
 
-    &.active {
-        /* border-bottom: 3px solid red; */
-        box-shadow:inset 0px -3px 0px 0px #f00;
+    // add active class
+    &:hover {
+        transition: .3s ease-out;
+        color: red;
+    }
+
+    @media screen and (min-width:1200px) {
+        font-size: 1rem;
     }
 `
 
@@ -136,8 +152,6 @@ export const NavBtn = styled.nav`
 
 export const NavBtnLink = styled(Link)`
     border-radius: 50px;
-    /* background: #01bf71; */
-    /* white-space: nowrap; */
     padding: 10px 22px;
     color: #010606;
     font-size: 1rem;
@@ -172,4 +186,5 @@ export const CartItems = styled.div`
     position: absolute;
     bottom: 0;
     right: 25px;
+    opacity: ${({ cartCount }) => (cartCount === 0 ? '0' : '1')};
 `
