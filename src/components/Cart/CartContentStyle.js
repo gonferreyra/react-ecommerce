@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const CartContentContainer = styled.div``
+export const CartContentContainer = styled.div`
+    background-color: #f6f6f6;
+`
 
 export const CartBox = styled.div`
     display: grid;
@@ -45,6 +47,7 @@ export const CartProductQuantity = styled.input`
     width: 2.5rem;
     text-align: center;
     font-size: 1rem;
+    background: transparent;
 
     // Remove the arrows form input
     /* ::-webkit-inner-spin-button{

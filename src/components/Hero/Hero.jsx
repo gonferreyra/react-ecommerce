@@ -20,8 +20,8 @@ const Hero = () => {
         <HeroBackgroundVideo autoPlay loop muted src={Video} type="video/mp4" />
       </HeroBackground>
       <HeroContent>
-        <HeroContentH1>Shoes Store</HeroContentH1>
-        <HeroContentP>Get the latest sneakers</HeroContentP>
+        <HeroContentH1>Nike Store</HeroContentH1>
+        <HeroContentP>Get the latest shoes</HeroContentP>
         <HeroContentBtn>
           <button>Login</button>
         </HeroContentBtn>

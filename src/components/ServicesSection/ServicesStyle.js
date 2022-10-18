@@ -6,17 +6,22 @@ export const ServicesContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #010606;
+    /* background: #010606; */
+    background: #101522;
     opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
     transition: 0.3s ease-in-out;
 
     @media screen and (max-width: 768px) {
-        height: 1100px;
+        height: 900px;
     }
 
-    @media screen and (max-width: 480px) {
-        height: 1300px;
+    @media screen and (min-width: 1024px) {
+        height: 100vh;
     }
+    
+    /* @media screen and (max-width: 480px) {
+        height: 1300px;
+    } */
 `
 
 export const ServicesH1 = styled.h1`

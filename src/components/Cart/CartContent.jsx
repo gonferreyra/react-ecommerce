@@ -23,8 +23,6 @@ const CartContent = ({ data }) => {
 
   // state to change the quantity
   // const [inputQuantity, setInputQuantity] = useState(data.quantity);
-  // console.log(`state: ${inputQuantity}`);
-  // console.log(`data : ${data.quantity}`);
 
   // const onChangeHandler = (e) => {
   //   console.log(e.target.value);
@@ -61,7 +59,6 @@ const CartContent = ({ data }) => {
             cursor: "pointer",
           }}
           onClick={() => dispatch(removeFromCart(data.item.id))}
-          // onClick={() => console.log(data.item.id)}
         />
       </CartBox>
     </CartContentContainer>

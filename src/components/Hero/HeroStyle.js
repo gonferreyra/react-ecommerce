@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const HeroContainer = styled.div`
-    background: #0c0c0c;
+    /* background: #0c0c0c; */
+    background: #101522;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 30px;
-    height: 800px;
+    /* height: 800px; */
+    height: 100vh;
     position: relative;
     z-index: 1;
     opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
@@ -22,6 +24,10 @@ export const HeroContainer = styled.div`
         background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%), linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
         z-index: 2;
     }
+
+    /* @media screen and (min-width: 1450px) {
+        height: 850px;
+    } */
 `
 
 export const HeroBackground = styled.div`
@@ -58,11 +64,15 @@ export const HeroContentH1 = styled.h1`
     text-align: center;
 
     @media screen and (max-width: 768px) {
-        font-size: 40px;
+        font-size: 2.5rem;
     }
 
     @media screen and (max-width: 480px) {
-        font-size: 32px;
+        font-size: 2rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        font-size: 4rem;
     }
 `
 
@@ -74,11 +84,15 @@ export const HeroContentP = styled.p`
     max-width: 600px;
 
     @media screen and (max-width: 768px) {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
     @media screen and (max-width: 480px) {
-        font-size: 18px;
+        font-size: 1.125rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        font-size: 1.8rem;
     }
 `
 

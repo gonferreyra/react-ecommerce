@@ -1,21 +1,22 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { NavHashLink } from 'react-router-hash-link';
 
 export const InfoContainer = styled.div`
   color: #fff;
   /* background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#010606')}; */
-  /* background: #010606; */
   opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
   transition: 0.3s ease-in-out;
 
   @media screen and (max-width: 768px) {
-      padding: 100px 0;
+      padding: 50px 0;
   }
 `
 
 export const InfoWrapper = styled.div`
   display: grid;
   z-index: 1;
-  height: 600px;
+  min-height: 100vh;
   width: 100%;
   max-width: 1100px;
   margin-left: auto;
@@ -103,19 +104,21 @@ export const Img = styled.img`
   padding-right: 0;
 `
 
-export const ButtonBanner = styled.button`
-  width: 120px;
-  height: 40px;
-  font-size: 1rem;
-  border-radius: 50px;
-  border: none;
+export const ButtonBanner = styled(NavHashLink)`
+    font-size: 1rem;
+    border-radius: 50px;
+    border: none;
+    padding: 12px 45px;
+    transition: all 0.4s ease;
+    background: #f0f0f0;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 
-  transition: all 0.4s ease;
-
-  &:hover {
-    scale: 1.2;
-    background: black;
-    color: red;
-    transition: all 0.4s ease-in-out;
-  }
+    &:hover {
+        transition: all .2s ease-in-out;
+        /* scale: 1.2; */
+        background: black;
+        color: red;
+    }
 `

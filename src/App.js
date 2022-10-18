@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 import { UserContext } from "./components/Context/UserContext"
-import RouterApp from './components/router/RouterApp';
+import RouterApp from './router/RouterApp';
 
 function App() {
   // navbar-aside

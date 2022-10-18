@@ -33,7 +33,9 @@ const NewReleaseSection = () => {
                 Log in and start buying.
               </Subtitle>
               <BtnWrap>
-                <ButtonBanner>Buy now</ButtonBanner>
+                <ButtonBanner to="/#sneakerSection" smooth={true}>
+                  Buy now
+                </ButtonBanner>
                 {/* <Button
                   to="home"
                   smooth={true}

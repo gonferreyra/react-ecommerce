@@ -8,19 +8,18 @@ z-index: 1000;
     /* right: -100%; */
     right: ${({ cartIsOpen }) => (cartIsOpen ? '0' : '-100%')};
     width: 250px;
-    height: 100vh;
+    height: calc(100vh - 80px);
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
     background-color: white;
-    /* box-shadow: -2px solid 4px hsl(0 4% 15% / 10%); */
     border: 1px solide red;
     transition: .4s ease-in-out;
+    box-shadow: inset 0px -1px 5px 0px black;
 
-    /* &:active {
-        right: 0;
-        transition: all .5s ease-in-out;
-    } */
+    @media screen and (min-width: 1024px) {
+        width: 300px;
+    }
 `
 
 export const CartTitle = styled.h2`
