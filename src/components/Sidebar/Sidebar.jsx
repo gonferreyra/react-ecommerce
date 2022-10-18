@@ -10,6 +10,14 @@ import {
   SidebarRoute,
 } from "./SidebarStyle";
 
+//FIX OFFSETS OF LINKS AND CHANGE IT TO ROUTER-HASH
+//Replace reactscroll offset with a function and react-router-hash:
+const scrollWithOffset = (el, offsety) => {
+  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  const yOffset = offsety;
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+};
+
 const Sidebar = ({ isOpen, toggle }) => {
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
@@ -18,16 +26,32 @@ const Sidebar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink to="hero" onClick={toggle}>
+          <SidebarLink
+            to="/#hero"
+            onClick={toggle}
+            scroll={(el) => scrollWithOffset(el, -80)}
+          >
             Home
           </SidebarLink>
-          <SidebarLink to="sneakerSection" onClick={toggle}>
+          <SidebarLink
+            to="/#sneakerSection"
+            onClick={toggle}
+            scroll={(el) => scrollWithOffset(el, -80)}
+          >
             Sneakers
           </SidebarLink>
-          <SidebarLink to="service" onClick={toggle}>
+          <SidebarLink
+            to="/#service"
+            onClick={toggle}
+            scroll={(el) => scrollWithOffset(el, -80)}
+          >
             Services
           </SidebarLink>
-          <SidebarLink to="footer" onClick={toggle}>
+          <SidebarLink
+            to="/#footer"
+            onClick={toggle}
+            scroll={(el) => scrollWithOffset(el, -40)}
+          >
             About
           </SidebarLink>
         </SidebarMenu>
