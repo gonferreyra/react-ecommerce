@@ -13,8 +13,8 @@ import {
   IconBtn,
 } from "./SneakerCardStyle";
 import { BsFillCartCheckFill } from "react-icons/bs";
-import { BiDetail } from "react-icons/bi";
-
+// import { BiDetail } from "react-icons/bi";
+import { BsInfoCircle } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import {
   addToCart,
@@ -47,7 +47,8 @@ const SneakerCard = ({ sneaker }) => {
             onClick={() => dispatch(loadCurrentItem(sneaker))}
           >
             <IconBtn>
-              <BiDetail size={20} />
+              <BsInfoCircle size={20} />
+              {/* <BiDetail size={20} /> */}
             </IconBtn>
           </CardIcons>
         </CardHoverContainer>

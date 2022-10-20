@@ -11,6 +11,13 @@ export const SneakerSection = styled.div`
   align-items: center;
   opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
   transition: 0.3s ease-in-out;
+
+  @media screen and (min-width: 1024px) {
+        min-height: 100vh;
+  }
+  /* @media screen and (min-width: 1450px) {
+        height: auto;
+  } */
 `
 
 export const Section = styled.div`

@@ -3,13 +3,15 @@ import { Link } from "react-router-dom"
 
 export const ItemContainer = styled.div`
     background-color: #f6f6f6;
+    opacity: ${({ cartIsOpen }) => cartIsOpen ? '0.7' : '1'};
+    min-height: 100vh;
 `
 
 export const GridContainer = styled.div`
     display: grid;
     align-items: center;
     max-width: 1100px;
-    height: calc(100vh - 80px);
+    /* height: calc(100vh - 80px); */
     margin: auto;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 0.1fr;
@@ -18,10 +20,11 @@ export const GridContainer = styled.div`
         "ImgContainer Content"
         "BackBtnContainer BackBtnContainer"
     ;
+    padding-bottom: 50px;
     
     @media screen and (max-width: 700px) {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.1fr;
         grid-template-areas:
             "ImgContainer"
             "Content"

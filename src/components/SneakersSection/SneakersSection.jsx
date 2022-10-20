@@ -40,7 +40,11 @@ const SneakersSection = () => {
       <Section>
         <SneakerContainer>
           {products.slice(0, items).map((sneaker) => (
-            <SneakerCard key={sneaker.id} sneaker={sneaker} />
+            <SneakerCard
+              key={sneaker.id}
+              sneaker={sneaker}
+              cartIsOpen={cartIsOpen}
+            />
           ))}
         </SneakerContainer>
         <ButtonContainer>
