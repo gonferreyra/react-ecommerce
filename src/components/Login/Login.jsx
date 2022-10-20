@@ -26,14 +26,27 @@ import { BiLock } from "react-icons/bi";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { RiFacebookFill } from "react-icons/ri";
 import { RiTwitterFill } from "react-icons/ri";
+import { useForm } from "../../hooks/useForm";
 
 const Login = () => {
+  const [formValues, handleInputChange] = useForm({
+    email: "user@mail.com",
+    password: "",
+  });
+
+  const { email, password } = formValues;
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+  };
+
   return (
     <Main>
       <LoginSection>
         <LoginContainer>
           <FormBox>
-            <LoginForm>
+            <LoginForm onSubmit={handleLogin}>
               <LoginTitle>Login</LoginTitle>
               <FormUsername>
                 <Span>Username</Span>
@@ -46,7 +59,12 @@ const Login = () => {
                       color: "#71909D",
                     }}
                   />
-                  <Input />
+                  <Input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={handleInputChange}
+                  />
                 </UserName>
               </FormUsername>
               <FormPassword>
@@ -60,7 +78,12 @@ const Login = () => {
                       color: "#71909D",
                     }}
                   />
-                  <Input />
+                  <Input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handleInputChange}
+                  />
                 </UserPassword>
               </FormPassword>
               <FormLink>
