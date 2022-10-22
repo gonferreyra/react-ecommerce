@@ -1,4 +1,7 @@
-export const ADD_TO_CART = "ADD_TO_CART"
-export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
-export const ADJUST_QUANTITY = "ADJUST_QUANTITY"
-export const LOAD_CURRENT_ITEM = "LOAD_CURRENT_ITEM"
+export const types = {
+    ADD_TO_CART: "[shop] ADD_TO_CART",
+    REMOVE_FROM_CART: "[shop] REMOVE_FROM_CART",
+    ADJUST_QUANTITY: "[shop] ADJUST_QUANTITY",
+    LOAD_CURRENT_ITEM: "[shop] LOAD_CURRENT_ITEM",
+
+}

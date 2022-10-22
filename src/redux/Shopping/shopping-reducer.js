@@ -1,4 +1,4 @@
-import * as actionTypes from "./shopping-types"
+import { types } from "./shopping-types"
 
 const INITIAL_STATE = {
     products: [
@@ -171,7 +171,7 @@ const INITIAL_STATE = {
 
 const shopReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case actionTypes.ADD_TO_CART:
+        case types.ADD_TO_CART:
             // get the items data from the products
             // return the first element in the array that have the same id
             const item = state.products.find(product => product.id === action.payload.id)
@@ -191,13 +191,13 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                     // if it's not, create an array with the item and set it's quantity to 1
                     : [...state.cart, { item, quantity: 1 }],
             };
-        case actionTypes.REMOVE_FROM_CART:
+        case types.REMOVE_FROM_CART:
             // return every item that is not the one we clicked
             return {
                 ...state,
                 cart: state.cart.filter(item => item.item.id !== action.payload.id),
             }
-        case actionTypes.ADJUST_QUANTITY:
+        case types.ADJUST_QUANTITY:
             return {
                 ...state,
                 cart: state.cart.map(item => item.item.id === action.payload.id
@@ -208,7 +208,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                     : item
                 ),
             }
-        case actionTypes.LOAD_CURRENT_ITEM:
+        case types.LOAD_CURRENT_ITEM:
             return {
                 ...state,
                 currentItem: action.payload,
