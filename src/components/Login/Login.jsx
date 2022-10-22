@@ -15,11 +15,15 @@ import {
   FormLink,
   ForgotPass,
   FormError,
+  FormErrorP,
   FormBtn,
   FormButton,
   FormText,
   FormTextP,
   FormIcons,
+  IconBtn,
+  Register,
+  RegisterLink,
 } from "./LoginStyle";
 import { FiUser } from "react-icons/fi";
 import { BiLock } from "react-icons/bi";
@@ -27,10 +31,21 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import { RiFacebookFill } from "react-icons/ri";
 import { RiTwitterFill } from "react-icons/ri";
 import { useForm } from "../../hooks/useForm";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  startGoogleLogin,
+  startLoginEmailPassword,
+} from "../../redux/Auth/auth-actions";
+// import validator from "validator";
+// import { uiSetError } from "../../redux/UiReducer/ui-actions";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const { loading, msgError } = useSelector((state) => state.ui);
+
   const [formValues, handleInputChange] = useForm({
-    email: "user@mail.com",
+    email: "user@email.com",
     password: "",
   });
 
@@ -38,7 +53,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    dispatch(startLoginEmailPassword(email, password));
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -87,16 +106,18 @@ const Login = () => {
                 </UserPassword>
               </FormPassword>
               <FormLink>
-                <ForgotPass>Forgot password?</ForgotPass>
+                <ForgotPass to="/register">Forgot password?</ForgotPass>
               </FormLink>
-              <FormError></FormError>
+              <FormError>{/* <FormErrorP>Error</FormErrorP> */}</FormError>
               <FormBtn>
-                <FormButton>LOGIN</FormButton>
+                <FormButton disabled={loading}>LOGIN</FormButton>
               </FormBtn>
               <FormText>
                 <FormTextP>Or Sign Up Using</FormTextP>
               </FormText>
-              <FormIcons>
+            </LoginForm>
+            <FormIcons>
+              <IconBtn onClick={handleGoogleLogin}>
                 <AiOutlineGoogle
                   style={{
                     color: "white",
@@ -110,34 +131,38 @@ const Login = () => {
                     padding: "10px",
                   }}
                 />
-                <RiFacebookFill
-                  style={{
-                    color: "white",
-                    width: "50px",
-                    height: "50px",
-                    borderRadius: "50%",
-                    backgroundColor: "#3b5998",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: "10px",
-                  }}
-                />
-                <RiTwitterFill
-                  style={{
-                    color: "white",
-                    width: "50px",
-                    height: "50px",
-                    borderRadius: "50%",
-                    backgroundColor: "#1da1f2",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: "10px",
-                  }}
-                />
-              </FormIcons>
-            </LoginForm>
+              </IconBtn>
+
+              <RiFacebookFill
+                style={{
+                  color: "white",
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "50%",
+                  backgroundColor: "#3b5998",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "10px",
+                }}
+              />
+              <RiTwitterFill
+                style={{
+                  color: "white",
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "50%",
+                  backgroundColor: "#1da1f2",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "10px",
+                }}
+              />
+            </FormIcons>
+            <Register>
+              <RegisterLink to="/register">Create a new account</RegisterLink>
+            </Register>
           </FormBox>
         </LoginContainer>
       </LoginSection>
