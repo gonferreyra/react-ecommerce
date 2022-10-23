@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   SidebarContainer,
   Icon,
@@ -8,7 +9,11 @@ import {
   SidebarLink,
   SideBtnWrap,
   SidebarRoute,
+  UserInfo,
+  UserInfoName,
+  UserInfoImg,
 } from "./SidebarStyle";
+import UserImg from "../../img/blankuser.png";
 
 //FIX OFFSETS OF LINKS AND CHANGE IT TO ROUTER-HASH
 //Replace reactscroll offset with a function and react-router-hash:
@@ -18,7 +23,9 @@ const scrollWithOffset = (el, offsety) => {
   window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
 };
 
-const Sidebar = ({ isOpen, toggle }) => {
+const Sidebar = ({ isOpen, toggle, isLoggedIn }) => {
+  const auth = useSelector((state) => state.auth);
+
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
@@ -56,9 +63,26 @@ const Sidebar = ({ isOpen, toggle }) => {
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute to="/login" onClick={toggle}>
-            Sign In
-          </SidebarRoute>
+          {isLoggedIn && (
+            <UserInfo>
+              {auth.photo ? (
+                <>
+                  <UserInfoName>{auth.name}</UserInfoName>
+                  <UserInfoImg src={auth.photo} alt="profileImg" />
+                </>
+              ) : (
+                <>
+                  <UserInfoName>{auth.name}</UserInfoName>
+                  <UserInfoImg src={UserImg} alt="profileImg" />
+                </>
+              )}
+            </UserInfo>
+          )}
+          {!isLoggedIn && (
+            <SidebarRoute to="/login" onClick={toggle}>
+              Sign In
+            </SidebarRoute>
+          )}
         </SideBtnWrap>
       </SidebarWrapper>
     </SidebarContainer>

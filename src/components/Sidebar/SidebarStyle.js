@@ -92,3 +92,18 @@ export const SidebarRoute = styled(Link)`
         color: white;
     }
 `
+
+export const UserInfo = styled.div`
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: center;
+    gap: 0.5rem;
+`
+
+export const UserInfoName = styled.p``
+
+export const UserInfoImg = styled.img`
+    width: 40px;
+    border-radius: 50%;
+    background: aliceblue;
+`

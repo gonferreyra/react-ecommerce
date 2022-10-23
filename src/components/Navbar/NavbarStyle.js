@@ -30,6 +30,7 @@ export const NavbarContainer = styled.div`
     width: 100%;
     padding: 0 24px;
     max-width: 1100px;
+    position: relative;
 `
 
 export const NavLogo = styled(Link)`
@@ -187,4 +188,25 @@ export const CartItems = styled.div`
     bottom: 0;
     right: 25px;
     opacity: ${({ cartCount }) => (cartCount === 0 ? '0' : '1')};
+`
+
+export const UserInfo = styled.div`
+    position: absolute;
+    right: 100px;
+    top: 19px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+`
+
+export const UserInfoName = styled.p`
+    color: #fff;
+`
+
+export const UserInfoImg = styled.img`
+    width: 25px;
+    border-radius: 50%;
+    background-color: aliceblue;
 `

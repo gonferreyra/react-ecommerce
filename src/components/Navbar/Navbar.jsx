@@ -8,6 +8,9 @@ import {
   NavItem,
   NavLinks,
   NavBtn,
+  UserInfo,
+  UserInfoName,
+  UserInfoImg,
   NavBtnLink,
   NavCartBtn,
   CartItems,
@@ -21,8 +24,9 @@ import cartImg from "../../images/carrito.png";
 import { animateScroll as scroll } from "react-scroll";
 import { UserContext } from "../Context/UserContext";
 import { useSelector } from "react-redux";
+import UserImg from "../../img/blankuser.png";
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, isLoggedIn }) => {
   // Scroll to top function, react-scroll
   const toggleHome = () => {
     scroll.scrollToTop();
@@ -33,6 +37,7 @@ const Navbar = ({ toggle }) => {
   // connect state from store to component
   const cartState = useSelector((state) => state.shop.cart);
   // console.log(cartState);
+  const auth = useSelector((state) => state.auth);
 
   // number above cart
   const [cartCount, setCartCount] = useState(0);
@@ -101,20 +106,23 @@ const Navbar = ({ toggle }) => {
               </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks
-                to="/#footer"
-                spy={true}
-                smooth={true}
-                // aumentamos el offset ya que no tiene height suficiente para los -80px
-                offset={-230}
-                duration={500}
-              >
+              <NavLinks to="/#footer" smooth={true}>
                 About
               </NavLinks>
             </NavItem>
           </NavMenu>
 
           <NavBtn>
+            {isLoggedIn && (
+              <UserInfo>
+                <UserInfoName>{auth.name}</UserInfoName>
+                {auth.photo ? (
+                  <UserInfoImg src={auth.photo} alt="profilePicture" />
+                ) : (
+                  <UserInfoImg src={UserImg} alt="profilePicture" />
+                )}
+              </UserInfo>
+            )}
             {/* <NavBtnLink>Sign In</NavBtnLink> */}
             <NavBtnLink>
               <NavCartBtn src={cartImg} onClick={toggleCart} />
