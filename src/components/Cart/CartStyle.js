@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 export const CartContainer = styled.div`
 z-index: 1000;
@@ -53,4 +54,66 @@ export const BtnBuy = styled.button`
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+`
+
+export const UserInfo = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem auto;
+    gap: 0.5rem;
+`
+
+export const UserInfoName = styled.p``
+
+export const UserInfoImg = styled.img`
+    width: 40px;
+    border-radius: 50%;
+    background-color: aliceblue;
+`
+
+export const LogOutBtn = styled.button`
+    position: relative;
+    top: 10px;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    left: calc(50% - 50px);
+    margin: 0.5rem auto;
+    font-size: 1rem;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.1;
+        color: red;
+    }
+`
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1rem auto;
+    text-align: center;
+`
+
+export const LoginCart = styled(Link)`
+    padding: 10px 13px;
+    width: 75px;
+    background: black;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+`
+
+export const RegisterCart = styled(Link)`
+    padding: 10px 13px;
+    width: 75px;
+    background: black;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
 `

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import {
   removeFromCart,
   adjustQuantity,
-} from "../../redux/Shopping/shopping-actions";
+} from "../../../redux/Shopping/shopping-actions";
 import {
   CartContentContainer,
   CartBox,
@@ -19,22 +19,12 @@ import { BsTrash } from "react-icons/bs";
 
 const CartContent = ({ data }) => {
   const dispatch = useDispatch();
-  // console.log(data);
-
-  // state to change the quantity
-  // const [inputQuantity, setInputQuantity] = useState(data.quantity);
-
-  // const onChangeHandler = (e) => {
-  //   console.log(e.target.value);
-  //   setInputQuantity(e.target.value);
-  //   dispatch(adjustQuantity(data.item.id, e.target.value));
-  // };
 
   return (
     <CartContentContainer>
       <CartBox>
         <CartImg
-          src={require("../../img/" + data.item.url + ".png")}
+          src={require("../../../img/" + data.item.url + ".png")}
           alt="cart"
         />
         <ProductDetailBox>
