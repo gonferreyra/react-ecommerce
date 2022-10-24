@@ -1,24 +1,54 @@
 import { types } from './auth-types'
-import { getAuth, signInWithPopup, signInWithRedirect } from "firebase/auth";
-import { provider } from '../../firebase/firebase-config';
+import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import { auth, provider } from '../../firebase/firebase-config';
+import { uiFinishLoading, uiStartLoading } from '../UiReducer/ui-actions';
+import Swal from 'sweetalert2';
+
+// const auth = getAuth();
 
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
-        setTimeout(() => {
-            dispatch(login(123, 'Gon'))
-        }, 3500);
+        dispatch(uiStartLoading());
+        signInWithEmailAndPassword(auth, email, password)
+            .then(({ user }) => {
+                dispatch(
+                    login(user.uid, user.displayName)
+                );
+                dispatch(uiFinishLoading());
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch(uiFinishLoading())
+                Swal.fire("Error", error.message, "error")
+            })
     }
 }
 
-const auth = getAuth();
+export const registerWithEmailPassword = (name, email, password) => {
+    return (dispatch) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(async ({ user }) => {
+                // Establish userName with updateProfile from firebase
+                await updateProfile(user, { displayName: name });
+
+                dispatch(
+                    login(user.uid, user.displayName)
+                )
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+};
 
 export const startGoogleLogin = () => {
     return (dispatch) => {
         signInWithPopup(auth, provider)
             // Destructuring user from result
             .then(({ user }) => {
+                // console.log(user)
                 dispatch(
-                    login(user.uid, user.displayName)
+                    loginGoogle(user.uid, user.displayName, user.photoURL)
                 )
             })
     }
@@ -33,3 +63,28 @@ export const login = (uid, displayName) => {
         }
     }
 };
+
+export const loginGoogle = (uid, displayName, photoURL) => {
+    return {
+        type: types.login,
+        payload: {
+            uid,
+            displayName,
+            photoURL,
+        }
+    }
+};
+
+export const startLogout = () => {
+    return async (dispatch) => {
+        await signOut(auth)
+            .then(() => {
+                dispatch(logout())
+            })
+            .catch(error => console.log(error))
+    }
+};
+
+export const logout = () => ({
+    type: types.logout,
+})
