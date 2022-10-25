@@ -15,6 +15,10 @@ export const startLoginEmailPassword = (email, password) => {
                     login(user.uid, user.displayName)
                 );
                 dispatch(uiFinishLoading());
+                Swal.fire("Login success", "You will be redirect to home page in just a second", "success")
+                setTimeout(() => {
+                    window.location.href = "/"
+                }, 3000)
             })
             .catch(error => {
                 console.log(error)
@@ -30,13 +34,17 @@ export const registerWithEmailPassword = (name, email, password) => {
             .then(async ({ user }) => {
                 // Establish userName with updateProfile from firebase
                 await updateProfile(user, { displayName: name });
-
                 dispatch(
                     login(user.uid, user.displayName)
                 )
+                Swal.fire("Register success", "You are now logged in and will be redirect to home page in just a second", "success")
+                setTimeout(() => {
+                    window.location.href = "/"
+                }, 3000)
             })
             .catch(error => {
                 console.log(error);
+                Swal.fire("Error", error.message, "error")
             })
     }
 };
