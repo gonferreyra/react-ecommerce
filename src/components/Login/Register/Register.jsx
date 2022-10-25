@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Main,
@@ -24,10 +24,11 @@ import { useForm } from "../../../hooks/useForm";
 import validator from "validator";
 import { uiRemoveError, uiSetError } from "../../../redux/UiReducer/ui-actions";
 import { registerWithEmailPassword } from "../../../redux/Auth/auth-actions";
+import { UserContext } from "../../Context/UserContext";
 
 const Register = () => {
   const dispatch = useDispatch();
-
+  const { cartIsOpen } = useContext(UserContext);
   // connect state from store to component
   const msgError = useSelector((state) => state.ui.msgError);
   // console.log(msgError);
@@ -68,7 +69,7 @@ const Register = () => {
   };
 
   return (
-    <Main>
+    <Main cartIsOpen={cartIsOpen}>
       <RegisterSection>
         <RegisterContainer>
           <FormBox>

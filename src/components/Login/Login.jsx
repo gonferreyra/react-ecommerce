@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Main,
   LoginSection,
@@ -36,12 +36,13 @@ import {
   startGoogleLogin,
   startLoginEmailPassword,
 } from "../../redux/Auth/auth-actions";
+import { UserContext } from "../Context/UserContext";
 // import validator from "validator";
 // import { uiSetError } from "../../redux/UiReducer/ui-actions";
 
 const Login = () => {
   const dispatch = useDispatch();
-
+  const { cartIsOpen } = useContext(UserContext);
   const { loading, msgError } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange] = useForm({
@@ -61,7 +62,7 @@ const Login = () => {
   };
 
   return (
-    <Main>
+    <Main cartIsOpen={cartIsOpen}>
       <LoginSection>
         <LoginContainer>
           <FormBox>

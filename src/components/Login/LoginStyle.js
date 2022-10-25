@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const Main = styled.main`
     padding: 7rem 0 3rem;
     background-color: #6e85b7;
+    opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
 `
 
 export const LoginSection = styled.section`
@@ -105,6 +106,10 @@ export const FormButton = styled.button`
     cursor: pointer;
     background: black;
     color: white;
+
+    &:hover {
+        scale: 1.1;
+    }
 `
 
 export const FormText = styled.div`

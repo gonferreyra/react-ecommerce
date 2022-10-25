@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export const Main = styled.main`
     padding: 7rem 0 3rem;
     background-color: #6e85b7;
+    opacity: ${({ cartIsOpen }) => cartIsOpen ? "0.7" : "1"};
 `
 
 export const RegisterSection = styled.section``
