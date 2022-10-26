@@ -14,7 +14,7 @@ import {
   Img,
   ButtonBanner,
 } from "./NewReleaseSectionStyle";
-import Img2 from "../../images/jordan.png";
+import Img2 from "../../img/jordan.png";
 import { UserContext } from "../Context/UserContext";
 
 const NewReleaseSection = () => {
@@ -36,16 +36,6 @@ const NewReleaseSection = () => {
                 <ButtonBanner to="/#sneakerSection" smooth={true}>
                   Buy now
                 </ButtonBanner>
-                {/* <Button
-                  to="home"
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact="true"
-                  // offset={-80}
-                >
-                  button label
-                </Button> */}
               </BtnWrap>
             </TextWrapper>
           </Column1>

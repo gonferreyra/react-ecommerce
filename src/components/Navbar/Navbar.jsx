@@ -20,7 +20,7 @@ import {
   CartItemsMobile,
 } from "./NavbarStyle";
 import { HiMenu } from "react-icons/hi";
-import cartImg from "../../images/carrito.png";
+import cartImg from "../../img/carrito.png";
 import { animateScroll as scroll } from "react-scroll";
 import { UserContext } from "../Context/UserContext";
 import { useSelector } from "react-redux";
@@ -64,7 +64,7 @@ const Navbar = ({ toggle, isLoggedIn }) => {
       <Nav>
         <NavbarContainer>
           <NavLogo to="/" onClick={toggleHome}>
-            Store
+            Nike
           </NavLogo>
           <NavCartMobile>
             <NavCartMobileBtn>
@@ -106,8 +106,8 @@ const Navbar = ({ toggle, isLoggedIn }) => {
               </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/#footer" smooth={true}>
-                About
+              <NavLinks to="/login" smooth={true}>
+                Login
               </NavLinks>
             </NavItem>
           </NavMenu>
@@ -123,7 +123,6 @@ const Navbar = ({ toggle, isLoggedIn }) => {
                 )}
               </UserInfo>
             )}
-            {/* <NavBtnLink>Sign In</NavBtnLink> */}
             <NavBtnLink>
               <NavCartBtn src={cartImg} onClick={toggleCart} />
               <CartItems cartCount={cartCount}>{cartCount}</CartItems>

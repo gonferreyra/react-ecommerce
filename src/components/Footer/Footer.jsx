@@ -63,29 +63,25 @@ const Footer = () => {
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to="/" onClick={toggleHome}>
-              Store
+              Nike Store
             </SocialLogo>
             <WebsiteRights>
-              Store © {new Date().getFullYear()} All rights reserved.
+              Nike © {new Date().getFullYear()} All rights reserved.
             </WebsiteRights>
             <SocialIcons>
-              <SocialIconLink href="/" target="_blank" aria-label="Facebook">
+              <SocialIconLink href="/" target="_blank">
                 <FaFacebook />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Instagram">
+              <SocialIconLink href="/" target="_blank">
                 <FaInstagram />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Youtube">
+              <SocialIconLink href="/" target="_blank">
                 <FaYoutube />
               </SocialIconLink>
-              <SocialIconLink
-                href="//www.twitter.com"
-                target="_blank"
-                aria-label="Twitter"
-              >
+              <SocialIconLink href="/" target="_blank">
                 <FaTwitter />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Linkedin">
+              <SocialIconLink href="/" target="_blank">
                 <FaLinkedin />
               </SocialIconLink>
             </SocialIcons>

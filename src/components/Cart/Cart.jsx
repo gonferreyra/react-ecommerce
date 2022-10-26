@@ -27,11 +27,9 @@ import UserImg from "../../img/blankuser.png";
 const Cart = ({ isLoggedIn }) => {
   const { cartIsOpen, toggleCart } = useContext(UserContext);
 
-  // bring cart from reducer (name: shop)
+  // bring cart and auth from reducer
   const cart = useSelector((state) => state.shop.cart);
-  // console.log(cart);
   const auth = useSelector((state) => state.auth);
-  // console.log(auth);
 
   // Update total
   const [totalPrice, setTotalPrice] = useState(0);
@@ -86,7 +84,7 @@ const Cart = ({ isLoggedIn }) => {
               <TotalTitle>Total</TotalTitle>
               <TotalPrice>$ {totalPrice}</TotalPrice>
             </CartTotal>
-            <BtnBuy>Buy Now</BtnBuy>
+            {isLoggedIn && <BtnBuy>Buy Now</BtnBuy>}
           </>
         )}
         {auth.uid ? (
@@ -97,7 +95,6 @@ const Cart = ({ isLoggedIn }) => {
             <RegisterCart to="/register">Register</RegisterCart>
           </ButtonContainer>
         )}
-        {/* <LogOutBtn onClick={handleLogout}>Logout</LogOutBtn> */}
       </CartContainer>
     </>
   );

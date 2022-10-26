@@ -2,13 +2,8 @@ import React, { useContext } from "react";
 import {
   HeroContainer,
   HeroBackground,
-  HeroBackgroundVideo,
-  HeroContent,
-  HeroContentH1,
-  HeroContentP,
-  HeroContentBtn,
+  HerobackgrundImageTest,
 } from "./HeroStyle";
-import Video from "../../video/zapatillas.mp4";
 import { UserContext } from "../Context/UserContext";
 
 const Hero = () => {
@@ -17,15 +12,23 @@ const Hero = () => {
   return (
     <HeroContainer id="hero" cartIsOpen={cartIsOpen}>
       <HeroBackground>
-        <HeroBackgroundVideo autoPlay loop muted src={Video} type="video/mp4" />
+        <HerobackgrundImageTest
+          src={require("../../img/nikelogo2.gif")}
+          alt="test"
+          style={{
+            width: "100%",
+            objectFit: "cover",
+          }}
+        />
+        {/* <HeroBackgroundVideo autoPlay loop muted src={Video} type="video/mp4" /> */}
       </HeroBackground>
-      <HeroContent>
+      {/* <HeroContent>
         <HeroContentH1>Nike Store</HeroContentH1>
         <HeroContentP>Get the latest shoes</HeroContentP>
         <HeroContentBtn>
-          <button>Login</button>
+          <HeroButton to="/login">Login</HeroButton>
         </HeroContentBtn>
-      </HeroContent>
+      </HeroContent> */}
     </HeroContainer>
   );
 };

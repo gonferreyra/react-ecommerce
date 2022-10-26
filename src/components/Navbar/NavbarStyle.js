@@ -37,7 +37,7 @@ export const NavLogo = styled(Link)`
     color: #fff;
     justify-self: flex-start;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     display: flex;
     align-items: center;
     margin-left: 24px;
@@ -87,7 +87,7 @@ export const CartItemsMobile = styled.div`
     opacity: ${({ cartCount }) => (cartCount === 0 ? '0' : '1')};
 `
 
-// Toggle elemento on Nav to click and open
+// Toggle element on Nav to click and open
 export const ToggleIcon = styled.div`
     display: none;
 

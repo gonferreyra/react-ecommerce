@@ -8,9 +8,9 @@ import {
   ServicesH2,
   ServicesP,
 } from "./ServicesStyle";
-import Payments from "../../images/undraw_stripe_payments_re_chlm.svg";
-import Free from "../../images/free.svg";
-import Change from "../../images/change.svg";
+import Payments from "../../img/undraw_stripe_payments_re_chlm.svg";
+import Free from "../../img/free.svg";
+import Change from "../../img/change.svg";
 import { UserContext } from "../Context/UserContext";
 
 const ServicesSection = () => {
