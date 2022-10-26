@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 export const Main = styled.main`
-    padding: 7rem 0 3rem;
+    padding: 3rem 0;
     background-color: #6e85b7;
     opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
 `
@@ -19,11 +19,11 @@ export const FormBox = styled.div`
     background-color: #fff;
     border-radius: 10px;
     max-width: 330px;
-    padding: 50px;
+    padding: 35px;
     margin: auto;
 
     @media screen and (min-width: 768px) {
-        max-width: 450px;
+        max-width: 420px;
     }
 `
 
@@ -34,12 +34,12 @@ export const LoginForm = styled.form`
 export const LoginTitle = styled.p`
     font-size: 40px;
     text-align: center;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
     font-weight: 600;
 `
 
 export const FormUsername = styled.div`
-    margin-top: 2rem;
+    margin-top: 1rem;
 `
 
 export const Span = styled.span`
@@ -62,7 +62,7 @@ export const Input = styled.input`
 `
 
 export const FormPassword = styled.div`
-    margin-top: 2rem;
+    margin-top: 1rem;
 `
 
 export const UserPassword = styled.div`
@@ -100,7 +100,7 @@ export const FormBtn = styled.div`
 export const FormButton = styled.button`
     width: 100%;
     height: 30px;
-    margin: 2rem 0;
+    margin: 1rem 0;
     border: none;
     border-radius: 10px;
     cursor: pointer;

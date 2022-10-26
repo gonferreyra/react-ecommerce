@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 export const HeroContainer = styled.div`
     /* background: #0c0c0c; */
@@ -13,7 +14,7 @@ export const HeroContainer = styled.div`
     z-index: 1;
     opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
     transition: 0.3s ease-in-out;
-
+/* 
     :before{
         content: '';
         position: absolute;
@@ -23,7 +24,7 @@ export const HeroContainer = styled.div`
         bottom: 0;
         background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%), linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
         z-index: 2;
-    }
+    } */
 
     /* @media screen and (min-width: 1450px) {
         height: 850px;
@@ -41,6 +42,14 @@ export const HeroBackground = styled.div`
     overflow: hidden;
 `
 export const HeroBackgroundVideo = styled.video`
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    background: #232a34;
+`
+
+export const HerobackgrundImageTest = styled.img`
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
@@ -101,4 +110,19 @@ export const HeroContentBtn = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+`
+
+export const HeroButton = styled(Link)`
+    padding: 12px 45px;
+    background: #f0f0f0;
+    border-radius: 50px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+        background-color: black;
+        color: red;
+    }
 `
