@@ -14,6 +14,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase-config"
 import { useDispatch } from 'react-redux'
 import { login, loginGoogle } from '../redux/Auth/auth-actions'
+import Spinner from '../components/Spinner/Spinner'
+import ConfirmBuy from '../components/ConfirmBuy/ConfirmBuy'
 // import { useNavigate } from 'react-router-dom';
 
 
@@ -50,7 +52,7 @@ const RouterApp = () => {
     // See what we can add - Spinner???
     if (check) {
         return (
-            <h1>Wait..</h1>
+            <Spinner />
         )
     }
 
@@ -66,6 +68,7 @@ const RouterApp = () => {
                 <Route path="*" element={<Home />} />
                 <Route path='/product/:id' element={<SneakerItem />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/exit' element={<ConfirmBuy />} />
             </Routes>
             <Footer />
         </BrowserRouter>
