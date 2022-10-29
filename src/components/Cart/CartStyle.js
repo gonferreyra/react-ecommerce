@@ -46,14 +46,25 @@ export const TotalPrice = styled.p`
     margin-left: .5rem;
 `
 
-export const BtnBuy = styled.button`
+export const BtnBuy = styled(Link)`
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 1.5rem auto 0 auto;
-    padding: 12px 20px;
     border: none;
     font-size: 1rem;
-    font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+
+    &:hover {
+        scale: 1.1;
+        color: red;
+    }
 `
 
 export const UserInfo = styled.div`

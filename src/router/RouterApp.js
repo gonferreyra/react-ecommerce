@@ -15,7 +15,8 @@ import { auth } from "../firebase/firebase-config"
 import { useDispatch } from 'react-redux'
 import { login, loginGoogle } from '../redux/Auth/auth-actions'
 import Spinner from '../components/Spinner/Spinner'
-import ConfirmBuy from '../components/ConfirmBuy/ConfirmBuy'
+import Purchase from '../components/Purchase/Purchase'
+
 // import { useNavigate } from 'react-router-dom';
 
 
@@ -68,7 +69,7 @@ const RouterApp = () => {
                 <Route path="*" element={<Home />} />
                 <Route path='/product/:id' element={<SneakerItem />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/exit' element={<ConfirmBuy />} />
+                <Route path='/exit' element={<Purchase />} />
             </Routes>
             <Footer />
         </BrowserRouter>

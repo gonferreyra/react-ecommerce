@@ -84,7 +84,11 @@ const Cart = ({ isLoggedIn }) => {
               <TotalTitle>Total</TotalTitle>
               <TotalPrice>$ {totalPrice}</TotalPrice>
             </CartTotal>
-            {isLoggedIn && <BtnBuy>Buy Now</BtnBuy>}
+            {isLoggedIn && (
+              <BtnBuy to="/exit" onClick={toggleCart}>
+                Buy Now
+              </BtnBuy>
+            )}
           </>
         )}
         {auth.uid ? (

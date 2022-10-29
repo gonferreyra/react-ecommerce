@@ -29,7 +29,9 @@ const CartContent = ({ data }) => {
         />
         <ProductDetailBox>
           <CartProductTitle>{data.item.name}</CartProductTitle>
-          <CartProductPrice>$ {data.item.price}</CartProductPrice>
+          <CartProductPrice>
+            $ {data.item.price * data.quantity}
+          </CartProductPrice>
           <CartQuantityContainer>
             <CartQuantityLabel>Qty: </CartQuantityLabel>
             <CartProductQuantity

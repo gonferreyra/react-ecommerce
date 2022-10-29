@@ -83,6 +83,7 @@ const Login = () => {
                     type="email"
                     name="email"
                     value={email}
+                    autoComplete="off"
                     onChange={handleInputChange}
                   />
                 </UserName>
