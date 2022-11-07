@@ -92,11 +92,22 @@ const Cart = ({ isLoggedIn }) => {
           </>
         )}
         {auth.uid ? (
-          <LogOutBtn onClick={handleLogout}>Logout</LogOutBtn>
+          <LogOutBtn
+            onClick={() => {
+              handleLogout();
+              toggleCart();
+            }}
+          >
+            Logout
+          </LogOutBtn>
         ) : (
           <ButtonContainer>
-            <LoginCart to="/login">Login</LoginCart>
-            <RegisterCart to="/register">Register</RegisterCart>
+            <LoginCart to="/login" onClick={toggleCart}>
+              Login
+            </LoginCart>
+            <RegisterCart to="/register" onClick={toggleCart}>
+              Register
+            </RegisterCart>
           </ButtonContainer>
         )}
       </CartContainer>
