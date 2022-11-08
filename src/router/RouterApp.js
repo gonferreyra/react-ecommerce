@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux'
 import { login, loginGoogle } from '../redux/Auth/auth-actions'
 import Spinner from '../components/Spinner/Spinner'
 import Purchase from '../components/Purchase/Purchase'
+import PrivateRoute from '../utils/PrivateRouter'
 
 // import { useNavigate } from 'react-router-dom';
 
@@ -31,11 +32,11 @@ const RouterApp = () => {
     // Check if user is authenticated or not
     const [check, setCheck] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // console.log(isLoggedIn)
 
     // Keep state of user authenticated on reload. user? check if user has something, then look for user.uid
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-
             if (user?.photoURL) {
                 dispatch(loginGoogle(user.uid, user.displayName, user.photoURL))
                 setIsLoggedIn(true)
@@ -64,12 +65,13 @@ const RouterApp = () => {
             <Navbar isOpen={isOpen} toggle={toggle} isLoggedIn={isLoggedIn} />
             <Cart isLoggedIn={isLoggedIn} />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
                 <Route path="*" element={<Home />} />
                 <Route path='/product/:id' element={<SneakerItem />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/exit' element={<Purchase />} />
+                <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
+                <Route element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
+                    <Route path='/exit' element={<Purchase />} />
+                </Route>
             </Routes>
             <Footer />
         </BrowserRouter>
