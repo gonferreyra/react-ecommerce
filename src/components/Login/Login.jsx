@@ -39,22 +39,38 @@ import {
 import { UserContext } from "../Context/UserContext";
 // import validator from "validator";
 // import { uiSetError } from "../../redux/UiReducer/ui-actions";
+import { redirect, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+// import { IoMdNotificationsOutline } from "react-icons/io";
 
-const Login = () => {
+const Login = ({ isLoggedIn }) => {
   const dispatch = useDispatch();
   const { cartIsOpen } = useContext(UserContext);
   const { loading, msgError } = useSelector((state) => state.ui);
+  const { name } = useSelector((state) => state.auth);
+  console.log(name);
+  const navigate = useNavigate();
 
   const [formValues, handleInputChange] = useForm({
     email: "user@email.com",
     password: "",
   });
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [isLoggedIn]);
+
   const { email, password } = formValues;
 
+  // console.log(isLoggedIn);
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(startLoginEmailPassword(email, password));
+    // navigate('/')
   };
 
   const handleGoogleLogin = () => {
