@@ -8,7 +8,6 @@ import {
   Image,
   TextContainer,
   Name,
-  Span,
   QtyContainer,
   Qty,
   PriceContainer,

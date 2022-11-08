@@ -111,7 +111,6 @@ const Navbar = ({ toggle, isLoggedIn }) => {
               </NavLinks>
             </NavItem>
           </NavMenu>
-
           <NavBtn>
             {isLoggedIn && (
               <UserInfo>

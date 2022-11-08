@@ -4,7 +4,6 @@ import { auth, provider } from '../../firebase/firebase-config';
 import { uiFinishLoading, uiStartLoading } from '../UiReducer/ui-actions';
 import Swal from 'sweetalert2';
 
-// const auth = getAuth();
 
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
@@ -15,11 +14,14 @@ export const startLoginEmailPassword = (email, password) => {
                     login(user.uid, user.displayName)
                 );
                 dispatch(uiFinishLoading());
-                Swal.fire("Login success", "You will be redirect to home page in just a second", "success")
-                setTimeout(() => {
-                    window.location.href = "/"
-                }, 3000)
+                Swal.fire({
+                    title: 'Login successfull',
+                    text: 'You will be redirect to home page in just a second',
+                    icon: 'success',
+                    timer: 2000,
+                })
             })
+            // .then(result => navigate('/'))
             .catch(error => {
                 console.log(error)
                 dispatch(uiFinishLoading())
@@ -37,10 +39,12 @@ export const registerWithEmailPassword = (name, email, password) => {
                 dispatch(
                     login(user.uid, user.displayName)
                 )
-                Swal.fire("Register success", "You are now logged in and will be redirect to home page in just a second", "success")
-                setTimeout(() => {
-                    window.location.href = "/"
-                }, 3000)
+                Swal.fire({
+                    title: 'Register successfull',
+                    text: 'You are now logged in and will be redirect to home page in just a second',
+                    icon: 'success',
+                    timer: 2000
+                })
             })
             .catch(error => {
                 console.log(error);
@@ -54,10 +58,16 @@ export const startGoogleLogin = () => {
         signInWithPopup(auth, provider)
             // Destructuring user from result
             .then(({ user }) => {
-                // console.log(user)
+                console.log(user)
                 dispatch(
                     loginGoogle(user.uid, user.displayName, user.photoURL)
                 )
+                Swal.fire({
+                    title: 'Login successfull',
+                    text: 'You will be redirect to home page in just a second',
+                    icon: 'success',
+                    timer: 2000
+                })
             })
     }
 };

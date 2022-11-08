@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom'
 
 export const CartContainer = styled.div`
-z-index: 1000;
+    z-index: 1000;
     position: fixed;
     top: 80px;
     /* right: 0; */
@@ -15,7 +15,7 @@ z-index: 1000;
     padding: 20px;
     background-color: white;
     border: 1px solide red;
-    transition: .4s ease-in-out;
+    transition: .3s ease-in-out;
     box-shadow: inset 0px -1px 5px 0px black;
 
     @media screen and (min-width: 1024px) {
