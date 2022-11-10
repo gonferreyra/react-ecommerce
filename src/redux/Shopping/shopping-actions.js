@@ -34,9 +34,3 @@ export const loadCurrentItem = (item) => {
         payload: item
     }
 };
-
-export const emptyCart = () => {
-    return {
-        type: types.EMPTY_CART,
-    }
-}

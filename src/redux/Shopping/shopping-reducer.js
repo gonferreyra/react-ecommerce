@@ -1,7 +1,5 @@
 import { types } from "./shopping-types"
 
-const savedCart = JSON.parse(localStorage.getItem("savedCart")) || []
-
 const INITIAL_STATE = {
     products: [
         {
@@ -167,7 +165,7 @@ const INITIAL_STATE = {
             info: "Building on the Phantom GT, the Nike Phantom GT2 MG has an updated design and patterning that are engineered to help you place your shots with pinpoint accuracy. Off-center lacing provides a clean strike zone to help you dribble, pass and score with precision."
         }
     ],
-    cart: savedCart,
+    cart: [],
     currentItem: null,
 }
 
@@ -214,11 +212,6 @@ const shopReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentItem: action.payload,
-            }
-        case types.EMPTY_CART:
-            return {
-                ...state,
-                cart: []
             }
         default:
             return state
