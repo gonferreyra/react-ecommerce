@@ -1,26 +1,29 @@
 import React, { useContext, useMemo, useState } from "react";
-
-// import imgtest from "../../images/airjordan1.png";
-// import "./Style.css";
-
 import {
   SneakerContainer,
+  SearchBar,
+  SearchText,
+  SearchInput,
+  SearchBtn,
+  SearchError,
+  SearchErrorP,
   SneakerSection,
   ShowMoreBtn,
   Section,
   ButtonContainer,
 } from "./SneakersSectionStyle";
-// import { sneakers } from "../../DataBase/db";
 import SneakerCard from "./SneakerCard/SneakerCard";
-
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UserContext } from "../Context/UserContext";
+import { useForm } from "../../hooks/useForm";
+import { uiRemoveError, uiSetError } from "../../redux/UiReducer/ui-actions";
 
 const SneakersSection = () => {
   // connect state from store to component
   const products = useSelector((state) => state.shop.products);
+  // console.log(products);
 
-  // Items to show state, determines how many items are shown on the sneakers section
+  // Items to show, determines how many items are shown on the sneakers section
   const [itemsToShow, setItemsToShow] = useState({
     items: 3,
   });
@@ -43,21 +46,108 @@ const SneakersSection = () => {
   // bring state from context
   const { cartIsOpen } = useContext(UserContext);
 
+  // SearchBar
+  const dispatch = useDispatch();
+  const { msgError } = useSelector((state) => state.ui);
+  const [searchIsTrue, setSearchIsTrue] = useState(false);
+  const [search, handleInputChange] = useForm({
+    searchParams: "",
+  });
+  // Array to map when the search is succesfull
+  const [searchResultArray, setSearchResultArray] = useState([]);
+  // console.log(searchResultArray);
+  const { searchParams } = search;
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    let searchResult = [];
+    let searchValue = searchParams.toLowerCase();
+
+    if (searchValue === "") {
+      dispatch(uiSetError("Search field is empty. Please try again."));
+      setTimeout(() => {
+        dispatch(uiRemoveError());
+      }, 3000);
+      return;
+    } else {
+      products.forEach((sneaker) => {
+        const { name, category, price } = sneaker;
+        if (name.toLowerCase().includes(searchValue)) {
+          searchResult.push(sneaker);
+          setSearchIsTrue(true);
+          return;
+        } else if (price.toString().includes(searchValue)) {
+          searchResult.push(sneaker);
+          setSearchIsTrue(true);
+          return;
+        } else if (category.toLowerCase() === searchValue) {
+          searchResult.push(sneaker);
+          setSearchIsTrue(true);
+          return;
+        }
+      });
+
+      if (searchResult.length === 0) {
+        dispatch(
+          uiSetError(
+            "There are no sneakers with the searched parameters, please try again. You can search by name, category or price."
+          )
+        );
+        setTimeout(() => {
+          dispatch(uiRemoveError());
+        }, 3000);
+      }
+    }
+    return setSearchResultArray(searchResult);
+  };
+
   return (
     <SneakerSection id="sneakerSection" cartIsOpen={cartIsOpen}>
       <Section>
+        <SearchBar onSubmit={handleSearchSubmit}>
+          <SearchText>Search for your favourite sneaker</SearchText>
+          <SearchInput
+            type="text"
+            name="searchParams"
+            autoComplete="off"
+            value={searchParams}
+            onChange={handleInputChange}
+          />
+          <SearchBtn type="submit">Search</SearchBtn>
+        </SearchBar>
+        {msgError && (
+          <SearchError>
+            <SearchErrorP>{msgError}</SearchErrorP>
+          </SearchError>
+        )}
         <SneakerContainer>
-          {memoProducts.slice(0, items).map((sneaker) => (
-            <SneakerCard
-              key={sneaker.id}
-              sneaker={sneaker}
-              cartIsOpen={cartIsOpen}
-            />
-          ))}
-          {}
+          {searchIsTrue
+            ? searchResultArray
+                .slice(0, items)
+                .map((sneaker) => (
+                  <SneakerCard
+                    key={sneaker.id}
+                    sneaker={sneaker}
+                    cartIsOpen={cartIsOpen}
+                  />
+                ))
+            : memoProducts
+                .slice(0, items)
+                .map((sneaker) => (
+                  <SneakerCard
+                    key={sneaker.id}
+                    sneaker={sneaker}
+                    cartIsOpen={cartIsOpen}
+                  />
+                ))}
         </SneakerContainer>
         <ButtonContainer>
-          <ShowMoreBtn onClick={showMore}>Show more</ShowMoreBtn>
+          {!searchIsTrue && (
+            <ShowMoreBtn onClick={showMore}>Show more</ShowMoreBtn>
+          )}
+          {/* 
+            Hacer boton que cuando muestre resultado deje volver al inicio con los 3 sneakers
+           */}
         </ButtonContainer>
       </Section>
     </SneakerSection>

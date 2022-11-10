@@ -33,17 +33,19 @@ export const CartTitle = styled.h2`
 export const CartTotal = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
+    padding: 1rem 10px;
     border-top: 1px solid black;
 `
 
 export const TotalTitle = styled.p`
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
 `
 
 export const TotalPrice = styled.p`
     margin-left: .5rem;
+    font-weight: 700;
 `
 
 export const BtnBuy = styled(Link)`

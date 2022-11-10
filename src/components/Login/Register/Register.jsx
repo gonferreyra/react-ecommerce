@@ -34,8 +34,8 @@ const Register = () => {
   // console.log(msgError);
 
   const [formValues, handleInputChange] = useForm({
-    name: "Gonzalo",
-    email: "user@email.com",
+    name: "",
+    email: "",
     password: "",
     passconfirm: "",
   });
@@ -54,7 +54,7 @@ const Register = () => {
       dispatch(uiSetError("Name is required"));
       return false;
     } else if (!validator.isEmail(email)) {
-      dispatch(uiSetError("Email is not valid. Please try again"));
+      dispatch(uiSetError("Email is not valid. Please try again."));
       return false;
     } else if (password !== passconfirm || password.length < 5) {
       dispatch(

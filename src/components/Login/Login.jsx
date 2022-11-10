@@ -37,40 +37,41 @@ import {
   startLoginEmailPassword,
 } from "../../redux/Auth/auth-actions";
 import { UserContext } from "../Context/UserContext";
-// import validator from "validator";
-// import { uiSetError } from "../../redux/UiReducer/ui-actions";
-import { redirect, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+// import Swal from "sweetalert2";
 // import { IoMdNotificationsOutline } from "react-icons/io";
+import validator from "validator";
+import { uiRemoveError, uiSetError } from "../../redux/UiReducer/ui-actions";
 
 const Login = ({ isLoggedIn }) => {
   const dispatch = useDispatch();
   const { cartIsOpen } = useContext(UserContext);
-  const { loading, msgError } = useSelector((state) => state.ui);
-  const { name } = useSelector((state) => state.auth);
-  console.log(name);
-  const navigate = useNavigate();
+  const { msgError } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange] = useForm({
     email: "user@email.com",
     password: "",
   });
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
-    }
-  }, [isLoggedIn]);
-
   const { email, password } = formValues;
 
-  // console.log(isLoggedIn);
+  const isFormValid = () => {
+    if (!validator.isEmail(email)) {
+      dispatch(uiSetError("Email is not valid. Please try again."));
+      return false;
+    } else if (password === "") {
+      dispatch(uiSetError("Password can't be empty. Please try again."));
+      return false;
+    }
+
+    dispatch(uiRemoveError());
+    return true;
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(startLoginEmailPassword(email, password));
-    // navigate('/')
+    if (isFormValid()) {
+      dispatch(startLoginEmailPassword(email, password));
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -126,9 +127,13 @@ const Login = ({ isLoggedIn }) => {
               <FormLink>
                 <ForgotPass to="/register">Forgot password?</ForgotPass>
               </FormLink>
-              <FormError>{/* <FormErrorP>Error</FormErrorP> */}</FormError>
+              {msgError && (
+                <FormError>
+                  <FormErrorP>{msgError}</FormErrorP>
+                </FormError>
+              )}
               <FormBtn>
-                <FormButton disabled={loading}>LOGIN</FormButton>
+                <FormButton>LOGIN</FormButton>
               </FormBtn>
               <FormText>
                 <FormTextP>Or Sign Up Using</FormTextP>

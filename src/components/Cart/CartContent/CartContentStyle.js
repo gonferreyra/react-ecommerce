@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const CartContentContainer = styled.div`
-    background-color: #f6f6f6;
+    /* background-color: #f6f6f6; */
+    border-top: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
+    padding: 10px;
 `
 
 export const CartBox = styled.div`
@@ -9,7 +12,7 @@ export const CartBox = styled.div`
     grid-template-columns: 32% 50% 18%;
     align-items: center;
     gap: 5px;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 `
 
 export const CartImg = styled.img`

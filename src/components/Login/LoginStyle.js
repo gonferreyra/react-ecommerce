@@ -110,6 +110,11 @@ export const FormButton = styled.button`
     &:hover {
         scale: 1.1;
     }
+
+    &:disabled {
+        opacity: 0.8;
+        cursor: not-allowed;
+    }
 `
 
 export const FormText = styled.div`

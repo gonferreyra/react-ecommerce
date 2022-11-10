@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+// import Swal from "sweetalert2";
 import {
   ExitSection,
   ItemsContainer,
+  TitleHead,
+  HeadImg,
+  HeadName,
+  HeadQty,
+  HeadPrice,
   PaymentContainer,
   PaymentContainerBox,
   ButtonCash,
@@ -16,10 +21,13 @@ import {
   Confirm,
 } from "./PurchaseStyle";
 import Items from "./Items/Items";
+import Swal from "sweetalert2";
+import { emptyCart } from "../../redux/Shopping/shopping-actions";
+import { useNavigate } from "react-router-dom";
 
 const Purchase = () => {
   const cart = useSelector((state) => state.shop.cart);
-  console.log(cart);
+  // console.log(cart);
 
   // Update total
   const [totalPrice, setTotalPrice] = useState(0);
@@ -32,24 +40,42 @@ const Purchase = () => {
     setTotalPrice(total);
   }, [cart, totalPrice, setTotalPrice]);
 
+  const dispatch = useDispatch();
+
   // button
   const [disabled, setDisabled] = useState(true);
 
   const handlerDisabledButton = () => {
-    setDisabled(false);
+    setTimeout(() => {
+      setDisabled(true);
+    }, 100);
   };
 
-  const handlerEnableButton = () => {
-    setDisabled(true);
-  };
-
-  const purchaseComplete = () => {
-    console.log("clicked");
+  const navigate = useNavigate();
+  const purchaseComplete = async () => {
+    try {
+      await Swal.fire({
+        title: "Payment complete",
+        text: "Thanks for your buy. Hope to see you again soon.",
+        icon: "success",
+        timer: 3000,
+      });
+      await dispatch(emptyCart());
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <ExitSection>
       <ItemsContainer>
+        <TitleHead>
+          <HeadImg></HeadImg>
+          <HeadName>Name</HeadName>
+          <HeadQty>qty</HeadQty>
+          <HeadPrice>price</HeadPrice>
+        </TitleHead>
         {cart.map((item, i) => {
           return <Items key={i} item={item} />;
         })}
@@ -63,23 +89,13 @@ const Purchase = () => {
       <PaymentContainer>
         <PaymentContainerBox>
           <ButtonCash
-            onFocus={handlerDisabledButton}
-            onBlur={handlerEnableButton}
+            onBlur={handlerDisabledButton}
+            onFocus={() => setDisabled(false)}
           >
             Cash
           </ButtonCash>
-          <ButtonCreditCard
-            onFocus={handlerDisabledButton}
-            onBlur={handlerEnableButton}
-          >
-            CreditCard
-          </ButtonCreditCard>
-          <ButtonPaypal
-            onFocus={handlerDisabledButton}
-            onBlur={handlerEnableButton}
-          >
-            Paypal
-          </ButtonPaypal>
+          <ButtonCreditCard disabled={true}>CreditCard</ButtonCreditCard>
+          <ButtonPaypal>Paypal</ButtonPaypal>
         </PaymentContainerBox>
       </PaymentContainer>
       <Confirm disabled={disabled} onClick={purchaseComplete}>

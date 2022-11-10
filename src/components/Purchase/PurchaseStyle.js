@@ -13,6 +13,30 @@ export const ItemsContainer = styled.div`
     padding: 1rem;
 `
 
+export const TitleHead = styled.div`
+    background: #f5f5f5;
+    display: grid;
+    align-items: center;
+    grid-template-columns: .8fr 1.5fr .9fr .8fr;
+    grid-template-rows: 40px;
+    border-radius: 5px;
+    max-width: 940px;
+    margin: 0.5rem auto;
+    padding: 1rem;
+    width: 100%;
+`
+
+export const HeadImg = styled.p``
+
+export const HeadName = styled.p``
+
+export const HeadQty = styled.p`
+    text-align: center;
+`
+export const HeadPrice = styled.p`
+    text-align: center;
+`
+
 export const PaymentContainer = styled.div`
     padding: 1rem;
 `
@@ -53,18 +77,9 @@ export const ButtonCreditCard = styled.button`
     height: 40px;
     border-radius: 5px;
     border: none;
-    cursor: pointer;
+    cursor: not-allowed;
     background: black;
     color: white;
-
-    &:hover {
-        scale: 1.1;
-        color: red;
-    }
-
-    &:focus {
-        color: red;
-    }
 `
 
 export const ButtonPaypal = styled.button`
@@ -72,18 +87,9 @@ export const ButtonPaypal = styled.button`
     height: 40px;
     border-radius: 5px;
     border: none;
-    cursor: pointer;
+    cursor: not-allowed;
     background: black;
     color: white;
-
-    &:hover {
-        scale: 1.1;
-        color: red;
-    }
-
-    &:focus {
-        color: red;
-    }
 `
 
 export const TotalContainer = styled.div`
