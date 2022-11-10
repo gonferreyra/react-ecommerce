@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import ScrollToTop from '../helpers/ScrollToTop'
 import Home from '../pages/Home'
 import Cart from '../components/Cart/Cart'
@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux'
 import { login, loginGoogle } from '../redux/Auth/auth-actions'
 import Spinner from '../components/Spinner/Spinner'
 import Purchase from '../components/Purchase/Purchase'
-import PrivateRoute from '../utils/PrivateRouter'
+import PrivateRoute from '../utils/PrivateRoute'
 
 // import { useNavigate } from 'react-router-dom';
 
@@ -67,8 +67,9 @@ const RouterApp = () => {
             <Routes>
                 <Route path="*" element={<Home />} />
                 <Route path='/product/:id' element={<SneakerItem />} />
-                <Route path='/register' element={<Register />} />
-                <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
+                <Route path='/register' element={isLoggedIn ? <Navigate to='/' /> : <Register />} />
+                <Route path='/login' element={isLoggedIn ? <Navigate to='/' /> : <Login isLoggedIn={isLoggedIn} />} />
+                {/* <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} /> */}
                 <Route element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
                     <Route path='/exit' element={<Purchase />} />
                 </Route>
