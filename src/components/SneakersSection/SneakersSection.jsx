@@ -76,7 +76,7 @@ const SneakersSection = () => {
           searchResult.push(sneaker);
           setSearchIsTrue(true);
           return;
-        } else if (price.toString().includes(searchValue)) {
+        } else if (price.toString() === searchValue) {
           searchResult.push(sneaker);
           setSearchIsTrue(true);
           return;
