@@ -33,9 +33,35 @@ export const SearchText = styled.h2`
 
 `
 
-export const SearchInput = styled.input``
+export const SearchInput = styled.input`
+  width: 200px;
+  height: 25px;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 500;
 
-export const SearchBtn = styled.button``
+  &:focus {
+    outline: 1px solid blue;
+  }
+`
+
+export const SearchBtn = styled.button`
+  width: 120px;
+  height: 40px;
+  border-radius: 50px;
+  font-size: 1rem;
+  border: none;
+  transition: all 0.4s ease;
+
+  &:hover {
+    color: red;
+    background: black;
+    transition: all 0.4s ease-in-out;
+    scale: 1.2;
+  }
+`
 
 export const SearchError = styled.div`
   padding: 1rem 1.5rem;
@@ -44,6 +70,7 @@ export const SearchError = styled.div`
   border-radius: 5px;
   color: white;
   font-size: 1.2rem;
+  margin-bottom: 1rem;
 `
 
 export const SearchErrorP = styled.p``

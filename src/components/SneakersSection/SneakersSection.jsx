@@ -67,7 +67,7 @@ const SneakersSection = () => {
       dispatch(uiSetError("Search field is empty. Please try again."));
       setTimeout(() => {
         dispatch(uiRemoveError());
-      }, 3000);
+      }, 4000);
       return;
     } else {
       products.forEach((sneaker) => {
@@ -95,7 +95,7 @@ const SneakersSection = () => {
         );
         setTimeout(() => {
           dispatch(uiRemoveError());
-        }, 3000);
+        }, 4000);
       }
     }
     return setSearchResultArray(searchResult);

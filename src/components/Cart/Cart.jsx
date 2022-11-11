@@ -86,7 +86,7 @@ const Cart = ({ isLoggedIn }) => {
             </CartTotal>
             {isLoggedIn && (
               <BtnBuy to="/exit" onClick={toggleCart}>
-                Buy Now
+                Buy
               </BtnBuy>
             )}
           </>
