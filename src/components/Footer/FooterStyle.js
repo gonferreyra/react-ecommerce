@@ -99,13 +99,24 @@ export const SocialLogo = styled(Link)`
     font-size: 1.5rem;
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
     font-weight: bold;
+
+    @media screen and (max-width: 820px) {
+        margin-bottom: 16px;
+    }
 `
 
-export const WebsiteRights = styled.small`
+export const WebsiteRights = styled.p`
     color:#fff;
-    margin-bottom: 16px;
+
+    @media screen and (max-width: 820px) {
+        margin-bottom: 16px;
+    }
+`
+
+export const WebsiteLink = styled.a`
+    text-decoration: none;
+    color: inherit;
 `
 
 export const SocialIcons = styled.div`
@@ -113,6 +124,7 @@ export const SocialIcons = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 240px;
+    padding-top: 5px;
 `
 
 export const SocialIconLink = styled.a`

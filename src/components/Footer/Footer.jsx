@@ -12,6 +12,7 @@ import {
   SocialMediaWrap,
   SocialLogo,
   WebsiteRights,
+  WebsiteLink,
   SocialIcons,
   SocialIconLink,
 } from "./FooterStyle";
@@ -66,7 +67,13 @@ const Footer = () => {
               Nike Store
             </SocialLogo>
             <WebsiteRights>
-              Nike © {new Date().getFullYear()} All rights reserved.
+              <WebsiteLink
+                href="https://github.com/gonferreyra/"
+                target="_blank"
+              >
+                Gonzalo Ferreyra © {new Date().getFullYear()} All rights
+                reserved.
+              </WebsiteLink>
             </WebsiteRights>
             <SocialIcons>
               <SocialIconLink href="/" target="_blank">
